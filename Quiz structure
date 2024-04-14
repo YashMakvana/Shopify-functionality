@@ -1,0 +1,1230 @@
+<style>
+    .qa-center {
+        justify-content: center !important;
+        text-align: center !important;
+    }
+
+    .qa-section {
+        display: block;
+        padding: 60px 0;
+    }
+
+    .qa-section,
+    .qa-section * {
+        font-family: "Open Sans", sans-serif;
+        box-sizing: border-box;
+        --webkit-box-sizing: border-box;
+    }
+
+    .qa-wrapper {
+        display: block;
+        padding: 0 15px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .qa-start {
+        display: block;
+    }
+
+    .qa-section h2 {
+        display: block;
+        text-align: center;
+        font-size: 30px;
+        line-height: 34px;
+        font-weight: 700;
+        margin: 0 0 32px 0;
+        color: #f37d24;
+        position: relative;
+        padding: 0 0 20px 0;
+    }
+
+    .qa-section h2:after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+        width: 200px;
+        max-width: 80%;
+        height: 2px;
+        border-bottom: 2px solid #bfbfbf;
+    }
+
+    .qa-section h2 span {
+        display: block;
+        text-align: center;
+        font-size: 15px;
+        line-height: 21px;
+        font-weight: 500;
+        margin: 8px 0 0 0;
+        color: #5f5f5f;
+    }
+
+    .qa-start,
+    .qa-form,
+    .qa-thanks {
+        display: block;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .qa-form {
+        max-width: 500px;
+    }
+
+    .qa-thanks {
+        max-width: 520px;
+
+    }
+
+    .qa-form-box {
+        display: block;
+    }
+
+    .qa-form-row {
+        display: block;
+    }
+
+    .qa-form-row:not(:first-child) {
+        margin: 16px 0 0 0;
+    }
+
+    .qa-field-row {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -8px;
+    }
+
+    .qa-field-colm {
+        display: block;
+        float: left;
+        padding: 0 8px;
+        max-width: 50%;
+        flex: 0 0 50%;
+    }
+
+    .qa-field-colm .qa-form-row {
+        margin: 16px 0 0 0;
+    }
+
+    .qa-form-label {
+        display: block;
+        font-size: 14px;
+        line-height: 16px;
+        font-weight: 500;
+        margin: 0 0 8px 0;
+        padding: 0;
+    }
+
+    .qa-form-label.required:after,
+    .qa-box .q:after {
+        content: "*";
+        font-family: "Open Sans", sans-serif;
+        color: #ff0000;
+        font-size: 15px;
+        line-height: 15px;
+        font-weight: 600;
+        margin: 0px 0 0 2px;
+        position: relative;
+        top: -1px;
+    }
+
+    .qa-form-field {
+        display: block;
+        width: 100%;
+        height: 42px;
+        padding: 4px 10px;
+        border: 1px solid #b6b6b6;
+        border-radius: 4px;
+        font-size: 14px;
+        line-height: 16px;
+        font-weight: 500;
+        outline: none;
+        transition: 500ms;
+    }
+
+    .qa-form-field:focus {
+        border-color: #f37d24;
+    }
+
+    .qa-box {
+        display: none;
+    }
+
+    .qa-box .q {
+        display: block;
+        font-size: 18px;
+        line-height: 29px;
+        font-weight: 600;
+        color: #2a2a2a;
+    }
+
+    .qa-box .ans-list {
+        display: flex;
+        flex-flow: column;
+        margin: 24px 0 0 0;
+    }
+
+    .qa-box .ans-list .option-list {
+        display: block;
+        margin: 0;
+        padding: 0;
+        border-radius: 10px;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .qa-box .ans-list .option-list:not(:first-child) {
+        margin: 14px 0 0 0;
+    }
+
+    .qa-box .ans-list .option-list .ans-data {
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        background-color: #f5f5f5;
+        border: 1px solid #f5f5f5;
+        padding: 10px 10px 10px 36px;
+        border-radius: 10px;
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 500;
+        color: #383838;
+        min-height: 48px;
+        transition: 500ms;
+    }
+
+    .qa-box .ans-list .option-list input {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        opacity: 0;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    .qa-box .ans-list .option-list .ans-txt {
+        display: block;
+        position: relative;
+    }
+
+    .qa-box .ans-list .option-list .ans-count {
+        display: inline-block;
+        font-size: 17px;
+        /* line-height: 18px; */
+        font-weight: 700;
+        margin: 0 4px 0 0;
+    }
+
+    .qa-box .ans-list .option-list .ico {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translate(0, -50%);
+        width: 16px;
+        height: 16px;
+        border: 2px solid #878787;
+        border-radius: 100px;
+        transition: 500ms;
+    }
+
+    .qa-box .ans-list .option-list .ico:before {
+        content: "";
+        display: block;
+        width: 8px;
+        height: 8px;
+        /* background-color: #59d047; */
+        background-color: #f37d24;
+        border-radius: 100px;
+        opacity: 0;
+        visibility: hidden;
+        transition: 500ms;
+    }
+
+    .qa-box .ans-list .option-list input:checked~.ans-data {
+        /* background-color: #ddfbdc;
+          border-color: #92d488; */
+        background-color: #fff7f1;
+        border-color: #eeb589;
+    }
+
+    .qa-box .ans-list .option-list input:checked~.ans-data .ico {
+        /* border-color: #59d047; */
+        border-color: #f37d24;
+    }
+
+    .qa-box .ans-list .option-list input:checked~.ans-data .ico:before {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .qa-btns {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 30px 0 0 0;
+    }
+
+    .qa-email-checkbox {
+        display: block;
+        margin: 0 0 16px 0;
+        width: 100%;
+    }
+
+    .qa-email-checkbox label {
+        display: inline-flex;
+        flex-wrap: wrap;
+        position: relative;
+        padding: 0 0 0 28px;
+        margin: 0;
+        cursor: pointer;
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    .qa-email-checkbox label input {
+        display: block;
+        position: absolute;
+        width: 18px;
+        height: 100%;
+        cursor: pointer;
+        padding: 0;
+        margin: 0;
+        left: 0;
+        top: 0;
+        opacity: 0;
+    }
+
+    .qa-email-checkbox .qa-check-ico {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: -1px;
+        left: 0;
+        width: 18px;
+        height: 18px;
+        border: 2px solid #bcbcbc;
+        background-color: #fff;
+        border-radius: 4px;
+        transition: 600ms;
+    }
+
+    .qa-email-checkbox .qa-check-ico:before {
+        content: "";
+        display: block;
+        width: 9px;
+        height: 4px;
+        border-left: 3px solid #fff;
+        border-bottom: 3px solid #fff;
+        transform: rotate(-45deg);
+        position: relative;
+        top: -1px;
+        opacity: 0;
+        visibility: hidden;
+        transition: 600ms;
+    }
+
+    .qa-email-checkbox label input:checked~.qa-check-ico {
+        background-color: #f37d24;
+        border-color: #f37d24;
+    }
+
+    .qa-email-checkbox label input:checked~.qa-check-ico:before {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .qa-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        background-color: #f37d24;
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: 500;
+        padding: 8px 20px;
+        border: none;
+        outline: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .qa-btn.qa-btn-md {
+        padding: 10px 20px;
+        font-size: 17px;
+        line-height: 22px;
+        min-width: 134px;
+    }
+
+    .qa-btn:not(:disabled):hover {
+        background-color: #fe9342;
+    }
+
+    .qa-btn:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+
+    .qa-section .qa-thanks h2 {
+        padding: 0;
+        color: #34bc26;
+        margin: 0 0 12px 0;
+    }
+
+    .qa-section .qa-thanks h2:after {
+        display: none;
+    }
+
+    .qa-section .qa-thanks h2 span {
+        font-size: 24px;
+        line-height: 30px;
+        font-weight: 600;
+    }
+
+    .qa-user-infos {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+    }
+
+    .qa-user-info-c {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .qa-user-infos .qa-info {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 6px 4px 0 4px;
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: 500;
+        color: #f18309;
+    }
+
+    .qa-user-infos .qa-info span {
+        display: inline-block;
+        font-weight: 600;
+        padding: 0 3px 0 0;
+        color: #454545;
+    }
+
+    .qa-attempts {
+        display: block;
+        margin: 40px auto 0 auto;
+        /* background-color: #b94a02; */
+        background-color: #e09462;
+        border-radius: 20px;
+        padding: 16px 14px 14px 14px;
+    }
+
+    .qa-attempts h3 {
+        display: block;
+        font-size: 21px;
+        line-height: 24px;
+        font-weight: 500;
+        margin: 0;
+        padding: 0;
+        color: #fff;
+    }
+
+    .qa-attempts h3 span {
+        display: inline-block;
+        font-size: 22px;
+        font-weight: 700;
+    }
+
+    .qa-attempt-lists {
+        display: block;
+        margin: 20px 0 0 0;
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 20px;
+    }
+
+    .qa-attempt-li {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin: 10px 0 0 0;
+        font-size: 18px;
+        line-height: 20px;
+        font-weight: 600;
+        color: #222;
+        background-color: #fff2d7;
+        padding: 10px 20px;
+        border-radius: 20px;
+    }
+
+    .qa-attempt-li:first-child {
+        margin: 0;
+    }
+
+    .qa-attempt-li:nth-child(2) {
+        background-color: #b2d2eb;
+    }
+
+    .qa-attempt-li:nth-child(3) {
+        background-color: #ffe2dc;
+    }
+
+    .qa-attempt-li:nth-child(4) {
+        background-color: #bb8d76;
+    }
+
+    .qa-attempt-li:nth-child(5) {
+        background-color: #b74b00;
+    }
+
+    .qa-attempt-li .at-l {
+        display: block;
+        float: left;
+        padding: 0;
+        color: #222;
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: 600;
+        width: 114px;
+    }
+
+    .qa-attempt-li .at-mid {
+        display: block;
+        float: left;
+        padding: 0 10px;
+        color: #222;
+        font-size: 12px;
+        line-height: 17px;
+        font-weight: 500;
+        width: calc(100% - 144px);
+    }
+
+    .qa-attempt-li .at-r {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        float: left;
+        color: #222;
+        font-size: 18px;
+        line-height: 20px;
+        font-weight: 700;
+        width: 30px;
+        height: 30px;
+        border: 2px solid #6d6d6d;
+        border-radius: 100px;
+    }
+
+    .qa-attempt-li:nth-child(4) .at-l,
+    .qa-attempt-li:nth-child(5) .at-l,
+    .qa-attempt-li:nth-child(4) .at-mid,
+    .qa-attempt-li:nth-child(5) .at-mid {
+        color: rgba(255, 255, 255, 0.95);
+    }
+
+    .qa-attempt-li:nth-child(4) .at-r,
+    .qa-attempt-li:nth-child(5) .at-r {
+        color: rgba(255, 255, 255, 0.95);
+        border-color: rgba(255, 255, 255, 0.95);
+    }
+</style>
+<div id="quiz-container">
+    <div class="qa-section">
+        <div class="qa-wrapper">
+            <div id="startQuizForm" class="qa-form">
+                <h2>Fill the form<span>Fill up the form to start your quiz.</span></h2>
+                <div class="qa-form-box">
+                    <div class="qa-form-row">
+                        <label for="" class="qa-form-label required">Name</label>
+                        <input type="text" id="name" placeholder="Enter your Name" required class="qa-form-field">
+                    </div>
+                    <div class="qa-form-row">
+                        <label for="" class="qa-form-label required">Phone Number</label>
+                        <input type="tel" id="mobile" placeholder="Enter your phone no." pattern="[0-9]{10}" required
+                            class="qa-form-field">
+                        <p style="color: red; font-style: italic; font-size: small; margin-top: 3px;">Please use +
+                            country code.</p>
+                    </div>
+                    <div class="qa-form-row">
+                        <label for="" class="qa-form-label required">Email</label>
+                        <input type="email" id="email" placeholder="Enter your email ID" required class="qa-form-field">
+                    </div>
+                    <div class="qa-btns qa-center">
+                        <button class="qa-btn qa-btn-md" onclick="startQuiz()">Start Quiz</button>
+                    </div>
+                </div>
+            </div>
+            <div id="startQA" class="qa-start" style="display: none;">
+                <h2>Personality quiz<span>10 question by Scentopia</span></h2>
+                <div class="qa-box" id="question1">
+                    <span class="q">Question 1: What is your idea of perfect Saturday night?</span>
+                    <div class="ans-list">
+                        <label class="option-list">
+                            <input type="radio" name="question1" value="A" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">A. </span> Active: bowling, ice skating
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question1" value="B" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">B. </span> Dancing &amp; drinks
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question1" value="C" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">C. </span> Watching a romantic movie?<br>
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question1" value="D" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">D. </span> Quiet &amp; classy Dinner
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question1" value="E" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">E. </span> Networking or Hot date!
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Repeat similar structure for remaining questions -->
+                <div class="qa-box" id="question2">
+                    <span class="q">Question 2: The best compliment you ever received from your boss was :</span>
+                    <div class="ans-list">
+                        <label class="option-list">
+                            <input type="radio" name="question2" value="A" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">A. </span> “You have so much energy.”
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question2" value="B" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">B. </span> “You are practical and team player.”
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question2" value="C" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">C. </span> “You're really take care of people around you.”
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question2" value="D" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">D. </span> “You're so professional.”
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question2" value="E" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">E. </span> “You really are result oriented.”
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="qa-box" id="question3">
+                    <span class="q">Question 3: Your attitude toward moisturiser is :</span>
+                    <div class="ans-list">
+                        <label class="option-list">
+                            <input type="radio" name="question3" value="A" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">A. </span> That it better have sunscreen in it.
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question3" value="B" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">B. </span> Did I forget it again
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question3" value="C" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">C. </span> Generous usage of carefully bought products
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question3" value="D" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">D. </span> Read the label and definitely read fine-print
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question3" value="E" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">E. </span> Celebrity brands only
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="qa-box" id="question4">
+                    <span class="q">Question 4: Are you ?</span>
+                    <div class="ans-list">
+                        <label class="option-list">
+                            <input type="radio" name="question4" value="A" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">A. </span> Carefree and energetic
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question4" value="B" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">B. </span> Cool headed person
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question4" value="C" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">C. </span> Warm Hearted person
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question4" value="D" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">D. </span> Responsible and careful
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question4" value="E" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">E. </span> Perfectionist and controlling
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="qa-box" id="question5">
+                    <span class="q">Question 5: I consider myself to be :</span>
+                    <div class="ans-list">
+                        <label class="option-list">
+                            <input type="radio" name="question5" value="A" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">A. </span> Sporty
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question5" value="B" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">B. </span> Outdoorsy
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question5" value="C" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">C. </span> Flirtatious
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question5" value="D" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">D. </span> Free-Spirited
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question5" value="E" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">E. </span> Daring
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="qa-box" id="question6">
+                    <span class="q">Question 6: The majority of clothing in my closet is :</span>
+                    <div class="ans-list">
+                        <label class="option-list">
+                            <input type="radio" name="question6" value="A" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">A. </span> Comfortable: Athletic attire
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question6" value="B" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">B. </span> Practical: Jeans and t-shirts; mix and match
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question6" value="C" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">C. </span> Dressy: Carefully chosen cloths, matchings
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question6" value="D" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">D. </span> Refined: Practical to wear in office & evening
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question6" value="E" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">E. </span> Expensive & Tailored
+                            </span>
+                        </label>
+
+                    </div>
+                </div>
+                <div class="qa-box" id="question7">
+                    <span class="q">Question 7: At a party I would be :</span>
+                    <div class="ans-list">
+                        <label class="option-list">
+                            <input type="radio" name="question7" value="A" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">A. </span> Commanding everyone's attention
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question7" value="B" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">B. </span> Sociable and open to meeting new people
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question7" value="C" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">C. </span> Dancing by myself on my favourite song
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question7" value="D" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">D. </span> Laidback and low-key
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question7" value="E" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">E. </span> The confident guest that commands attention naturally
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="qa-box" id="question8">
+                    <span class="q">Question 8: I have always loved the scent of :</span>
+                    <div class="ans-list">
+                        <label class="option-list">
+                            <input type="radio" name="question8" value="A" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">A. </span> Grapefruit
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question8" value="B" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">B. </span> Fresh cut grass
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question8" value="C" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">C. </span> Flowers
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question8" value="D" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">D. </span> Grandfather’s pipe
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question8" value="E" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">E. </span> Cooking spices
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="qa-box" id="question9">
+                    <span class="q">Question 9: The best way to calm your nerves just before a job interview is :</span>
+                    <div class="ans-list">
+                        <label class="option-list">
+                            <input type="radio" name="question9" value="A" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">A. </span> Working out in the gym
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question9" value="B" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">B. </span> Listening to your iPod
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question9" value="C" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">C. </span> Thinking about what to wear
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question9" value="D" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">D. </span> Doing Yoga or meditation
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question9" value="E" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">E. </span> Preparing harder & ensuring you know more than
+                                everyone else
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="qa-box" id="question10">
+                    <span class="q">Question 10: Your ideal after-work way to wind down is :</span>
+                    <div class="ans-list">
+                        <label class="option-list">
+                            <input type="radio" name="question10" value="A" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">A. </span> Participating in active sports
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question10" value="B" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">B. </span> Going to a beach or park
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question10" value="C" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">C. </span> Having drinks at some bar
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question10" value="D" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">D. </span> Watching latest movie, Netflix/TV at home
+                            </span>
+                        </label>
+                        <label class="option-list">
+                            <input type="radio" name="question10" value="E" onclick="toggleNextButton()">
+                            <span class="ans-data">
+                                <span class="ico"></span>
+                                <span class="ans-count">E. </span> Upgrading your skills, learning new things
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="qa-btns">
+                    <div class="qa-email-checkbox" id="qa-email-checkbox" style="display: none;">
+                        <label for="qa-email">
+                            <input type="checkbox" name="qa-email-check" id="qa-email" />
+                            <span class="qa-check-ico"></span>
+                            Are you want the result in your email?
+                        </label>
+                    </div>
+                    <button id="prevBtn" class="qa-btn" style="display: none;"
+                        onclick="prevQuestion()">Previous</button>
+                    <button id="nextBtn" class="qa-btn" style="display: none; margin-left: auto;"
+                        onclick="nextQuestion()" disabled>Next</button>
+                    <button id="submitBtn" class="qa-btn" style="display: none;" onclick="submitQuiz()"
+                        disabled>Submit</button>
+                </div>
+            </div>
+            <div class="qa-thanks" id="qa-thanks" style="display: none;">
+                <h2>Thank You for taking the quiz!</h2>
+                <div class="qa-user-infos">
+                    <div class="qa-user-info-c">
+                        <div class="qa-info" id="qa-user-nm">
+                            <span>Name:</span>
+                        </div>
+                        <div class="qa-info " id="qa-user-mobile">
+                            <span>Mobile:</span>
+                        </div>
+                        <div class="qa-info " id="qa-user-email">
+                            <span>Email:</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="qa-attempts">
+                    <h3>How many answers are <span>"A,B,C,D &amp; E"</span></h3>
+                    <div id="selectedOptions" class="qa-attempt-lists">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    let currentQuestion = 1;
+    const totalQuestions = 10; // Change this to total number of questions
+    let selectedOptions = {};
+
+    function startQuiz() {
+        const name = document.getElementById('name').value;
+        const mobile = document.getElementById('mobile').value;
+        const email = document.getElementById('email').value;
+
+        // Validate mobile number
+        //   const mobilePattern = /^[0-9]{10}$/;
+        //   if (!mobilePattern.test(mobile)) {
+        //     alert('Please enter a valid 10-digit mobile number.');
+        //     return;
+        //   }
+
+        // Validate email
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            alert('Please enter a valid email address.');
+            return;
+        }
+
+        if (name.trim() === '' || mobile.trim() === '' || email.trim() === '') {
+            alert('Please fill all fields.');
+            return;
+        }
+        document.getElementById('startQuizForm').style.display = 'none';
+        document.getElementById('startQA').style.display = 'block';
+        showQuestion(currentQuestion);
+        document.getElementById('nextBtn').style.display = 'inline-block';
+    }
+
+    function showQuestion(questionNumber) {
+        document.querySelectorAll('.qa-box').forEach(function (question) {
+            question.style.display = 'none';
+        });
+        document.getElementById('question' + questionNumber).style.display = 'block';
+        if (questionNumber === 1) {
+            document.getElementById('prevBtn').style.display = 'none';
+        } else {
+            document.getElementById('prevBtn').style.display = 'inline-block';
+        }
+        if (questionNumber === totalQuestions) {
+            document.getElementById('nextBtn').style.display = 'none';
+            document.getElementById('submitBtn').style.display = 'inline-block';
+            document.getElementById('qa-email-checkbox').style.display = 'block';
+            toggleNextButton(); // Enable submit button initially
+        } else {
+            document.getElementById('nextBtn').style.display = 'inline-block';
+            document.getElementById('submitBtn').style.display = 'none';
+            document.getElementById('qa-email-checkbox').style.display = 'none';
+        }
+    }
+
+    // function toggleNextButton() {
+    //   let selectedOption = document.querySelector('input[name="question' + currentQuestion + '"]:checked');
+    //   if (selectedOption || currentQuestion !== totalQuestions) {
+    //     document.getElementById('nextBtn').disabled = false;
+    //   } else {
+    //     document.getElementById('nextBtn').disabled = true;
+    //   }
+    //   // Check if it's the last question and an option is selected
+    //   if (currentQuestion === totalQuestions && selectedOption) {
+    //     document.getElementById('submitBtn').disabled = false;
+    //   }
+    // }
+
+
+    function toggleNextButton() {
+        document.getElementById('nextBtn').disabled = false;
+        let selectedOption = document.querySelector('input[name="question' + currentQuestion + '"]:checked');
+        if (!selectedOption) {
+            document.getElementById('nextBtn').disabled = true;
+        }
+        // Check if it's the last question and an option is selected
+        if (currentQuestion === totalQuestions && selectedOption) {
+            document.getElementById('submitBtn').disabled = false;
+        }
+    }
+
+    function prevQuestion() {
+        if (currentQuestion > 1) {
+            currentQuestion--;
+            showQuestion(currentQuestion);
+            toggleNextButton(); // Call toggleNextButton when going to previous question
+        }
+    }
+
+    function nextQuestion() {
+        let selectedOption = document.querySelector('input[name="question' + currentQuestion + '"]:checked');
+        if (!selectedOption && currentQuestion !== totalQuestions) {
+            alert('Please select an option before proceeding.');
+            return;
+        }
+        if (currentQuestion < totalQuestions) {
+            currentQuestion++;
+            showQuestion(currentQuestion);
+            toggleNextButton(); // Call toggleNextButton when going to next question
+            // document.getElementById('nextBtn').disabled = true; // Disable next button again
+        }
+    }
+
+    function submitQuiz() {
+        // Check if the user has selected an option in the last question
+        if (currentQuestion === totalQuestions) {
+            let selectedOption = document.querySelector('input[name="question' + currentQuestion + '"]:checked');
+            if (!selectedOption) {
+                alert('Please select an option before submitting.');
+                return;
+            }
+        }
+
+        // Count selected options
+        let selectedOptions = {
+            'A': 0,
+            'B': 0,
+            'C': 0,
+            'D': 0,
+            'E': 0
+        };
+
+        for (let i = 1; i <= totalQuestions; i++) {
+            let questionName = 'question' + i;
+            let selectedOption = document.querySelector('input[name="' + questionName + '"]:checked');
+            if (selectedOption) {
+                let optionValue = selectedOption.value;
+                selectedOptions[optionValue]++;
+            }
+        }
+
+        // Prepare HTML for selected options and their counts
+        let selectedOptionsHtml = '';
+
+        let optionsInfo = {
+            'A': 'Citrus',
+            'B': 'Fresh',
+            'C': 'Floral',
+            'D': 'Woody',
+            'E': 'Oriental'
+        };
+
+        let optionDescriptions = {
+            'A': 'Cheerful, bright, extroverted, innocent & energetic people, who often like scent of fruits & fresh things, Young at heart & happy personality',
+            'B': 'Happy go lucky, team players, who like taking calculated risks & are natural entrepreneur Functional extroverts & easy-going!',
+            'C': 'Your feelings and ability to connect with people are intense, love people & things passionately & feel life very deeply, Emotional, romantic and sentimental',
+            'D': 'Sophisticated, elegant & often deep-thinking, reserve & private nature, Like deeper darker, woody scents. Sexy & Mysterious personality',
+            'E': 'Charismatic, bold, dramatic, flamboyant & unique, oriental fragrance lovers & who loves spices, vanilla and exotic florals, Glamorous & Exotic'
+        };
+
+        var answerdata = [];
+        for (const option in selectedOptions) {
+            selectedOptionsHtml += `
+          <div class="qa-attempt-li">
+            <span class="at-l">${option} - ${optionsInfo[option]}</span>
+            <span class="at-mid">${optionDescriptions[option]}</span>
+            <span class="at-r">${selectedOptions[option]}</span>
+          </div>
+        `;
+            answerdata.push({
+                answername: option,
+                answertitle: optionsInfo[option],
+                answerdescription: optionDescriptions[option],
+                answerselvalue: selectedOptions[option]
+            });
+        }
+        console.log(answerdata);
+        // Insert selected options HTML into the container
+        document.getElementById('selectedOptions').innerHTML = selectedOptionsHtml;
+
+        // Show thank you message and user details
+        const name = document.getElementById('name').value;
+        const mobile = document.getElementById('mobile').value;
+        const email = document.getElementById('email').value;
+        document.getElementById('qa-thanks').style.display = 'block';
+        document.getElementById('qa-user-nm').innerHTML += name;
+        document.getElementById('qa-user-mobile').innerHTML += mobile;
+        document.getElementById('qa-user-email').innerHTML += email;
+        document.getElementById('question' + totalQuestions).style.display = 'none'; // Hide last question
+        document.getElementById('startQA').style.display = 'none'; // Hide all question
+        document.getElementById('prevBtn').style.display = 'none'; // Hide previous button
+        document.getElementById('submitBtn').style.display = 'none'; // Hide submit button
+
+
+        if (document.getElementById('qa-email').checked) {
+            console.log('Email sent');
+            $.ajax({
+                method: "POST",
+                dataType: "json",
+                // headers: {'Access-Control-Allow-Origin': '*'},
+                url: "https://scentopia.technoexponent.net/mailer/index.php",
+                data: {
+                    username: name,
+                    useremail: email,
+                    usermobile: mobile,
+                    answerdata
+                },
+                // success: function(){
+                //   console.log('success');
+                // },
+                // error: function(){
+                //   console.log('failure');
+                // }
+            });
+        }
+    }
+
+
+
+</script>
